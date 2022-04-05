@@ -1,0 +1,32 @@
+        Aplicatie Web (Tema 3 Protocoale si Comunicatii)
+
+            Clientul implementat este realizat in C si tot ce face este sa parseze
+        input de la tastatura si sa realizeze o sumedenie de comenzi care comunica
+        cu un server prin request-uri HTTP.
+
+            Parsarea si construirea de mesaje de tip JSON a fost facuta cu ajutorul
+        librariei "parson" (link github: https://github.com/kgabis/parson accesat ora
+        14:00, 22.05.2021), API-ul pus la dispozitie fiind unul usor de folosit. Am
+        utilizat libraria pentru generarea de payload (pentru comenzi de tip register,
+        login, add_book) si pentru parsarea raspunsului de la server (pentru achizitie
+        de date sau interpretarea erorilor).
+
+            client.c:
+                - Citeste pe un buffer de maxim 256B comenzi de la tastatura si are
+                  cate un handler (un subprogram ce se ocupa de comanda data).
+                - Fiecare handler genereaza un request (GET, POST sau DELETE) si
+                  parseaza raspunsul de la server.
+                - Erorile sunt gestionate de fiecare handler in parte iar daca un
+                  handler nu trimite o eroare inapoi atunci se afiseaza mesajul de
+                  succes.
+
+            request.c:
+                - Contine codul din laboratorul 10 si este modificat putin pentru a
+                  lucra cu JSON si token-uri JWT.
+
+            helpers.c & buffer.c:
+                - Cod nemodificat, este intocmai ca la laboratorul 10.
+
+            parson.c:
+                - Libraria folosita pentru lucrul cu JSON.
+            
